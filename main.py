@@ -37,6 +37,30 @@ def setDems():
     price = roomArea * multiNum
     print('Summary: £' + str(price))
 
+def isbnv():
+    global num
+    isbn_num = isbn_tb.get()
+    d1 = int(isbn_num[0]) * 1
+    d2 = int(isbn_num[1]) * 2
+    d3 = int(isbn_num[2]) * 3
+    d4 = int(isbn_num[3]) * 4
+    d5 = int(isbn_num[4]) * 5
+    d6 = int(isbn_num[5]) * 6
+    d7 = int(isbn_num[6]) * 7
+    d8 = int(isbn_num[7]) * 8
+    d9 = int(isbn_num[8]) * 9
+    if isbn_num[9] == 'Z':
+        d10 = 10
+    else:
+        d10 = int(isbn_num[9])
+        d10 = d10 * 10
+        d11 = (d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10)
+        num = d11 % 11
+    if num == 0:
+        return True
+    else:
+        print("ISBNError", "Please Enter a valid ISBN number")
+        return False
 
 
 window = tkinter.Tk()
@@ -55,6 +79,11 @@ econCheck = tkinter.Checkbutton(window, text = "Economy", command = setEcon).gri
 
 tkinter.Label(window, text = "Extras").grid(row = 6, column = 1)
 undercoatCheck = tkinter.Checkbutton(window, text = "Undercoat", command = setUC).grid(row = 7, column = 1)
+
+tkinter.Label(window, text = "ISBN").grid(row = 11, column = 0)
+isbn_tb = tkinter.Entry(window)
+isbn_tb.grid(row = 11, column = 1)
+buttoncheck = tkinter.Button(window, text = "CHECK ISBN", fg = "red", command = isbnv).grid(row = 11, column = 2)
 
 tkinter.Label(window, text = "Room Dimensions").grid(row = 12, column = 0)
 
